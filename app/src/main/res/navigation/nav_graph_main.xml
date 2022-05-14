@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:id="@+id/nav_graph_main"
+    app:startDestination="@id/weatherListFragment">
+
+    <fragment
+        android:id="@+id/weatherListFragment"
+        android:name="com.android.amm.weatherapp.view.weatherlist.WeatherListFragment"
+        android:label="WeatherListFragment">
+        <action
+            android:id="@+id/action_weatherListFragment_to_weatherDetailFragment"
+            app:destination="@id/weatherDetailFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/weatherDetailFragment"
+        android:name="com.android.amm.weatherapp.view.weatherdetail.WeatherDetailFragment"
+        android:label="WeatherDetailFragment" />
+</navigation>
