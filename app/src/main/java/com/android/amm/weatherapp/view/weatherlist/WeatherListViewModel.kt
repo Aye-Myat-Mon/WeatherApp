@@ -32,16 +32,6 @@ class WeatherListViewModel @Inject constructor(
             it
         }
 
-    init {
-        insertCityList()
-    }
-
-    private fun insertCityList() {
-        viewModelScope.launch {
-            cityListRepository.insertCityList()
-        }
-    }
-
     fun getCityList(name: String) {
         viewModelScope.launch {
             cityListRepository.getCityList(name).collect {

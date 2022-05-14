@@ -20,7 +20,4 @@ interface WeatherDao {
 
     @Query("SELECT * FROM CityModel WHERE name LIKE :cityName || '%'")
     fun getCityList(cityName: String): List<CityModel>
-
-    @Insert(onConflict = OnConflictStrategy.IGNORE)
-    fun insertCities(cityModel: List<CityModel>)
 }

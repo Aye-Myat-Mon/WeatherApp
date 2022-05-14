@@ -21,8 +21,10 @@ object DatabaseModule {
         return Room.databaseBuilder(
             appContext,
             AppDatabase::class.java,
-            "weather.db"
-        ).build()
+            "weatherApp.db"
+        )
+            .createFromAsset("database/weather.db")
+            .build()
     }
 
     @Provides
