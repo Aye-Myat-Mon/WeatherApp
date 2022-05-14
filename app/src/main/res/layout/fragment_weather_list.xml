@@ -51,22 +51,24 @@
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_weather"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         android:visibility="gone"
         app:layout_constraintTop_toBottomOf="@id/divider"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/row_daily_weather_item"/>
 
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/rv_city"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="0dp"
         android:visibility="visible"
         android:elevation="4dp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@id/app_bar"
+        app:layout_constraintBottom_toBottomOf="parent"
         tools:listitem="@layout/row_city_item"/>
 
     <TextView
