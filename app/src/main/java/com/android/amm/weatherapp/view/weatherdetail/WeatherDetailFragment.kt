@@ -15,14 +15,15 @@ import dagger.hilt.android.AndroidEntryPoint
 @AndroidEntryPoint
 class WeatherDetailFragment : Fragment() {
 
-    private lateinit var weatherDetailBinding: FragmentWeatherDetailBinding
+    private var binding: FragmentWeatherDetailBinding? = null
+    private val weatherDetailBinding get() = binding!!
 
     override fun onCreateView(
         inflater: LayoutInflater,
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        weatherDetailBinding = FragmentWeatherDetailBinding.inflate(inflater, container, false)
+        binding = FragmentWeatherDetailBinding.inflate(inflater, container, false)
         return weatherDetailBinding.root
     }
 
@@ -44,6 +45,11 @@ class WeatherDetailFragment : Fragment() {
                 .load(Constants.ICON_BASE_URL + weather.icon + "@2x.png")
                 .into(ivDetailWeatherIcon)
         }
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 
     companion object {

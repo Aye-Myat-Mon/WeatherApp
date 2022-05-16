@@ -22,7 +22,8 @@ import dagger.hilt.android.AndroidEntryPoint
 class WeatherListFragment: Fragment() {
     private val viewModel: WeatherListViewModel by activityViewModels()
 
-    private lateinit var weatherListBinding: FragmentWeatherListBinding
+    private var binding: FragmentWeatherListBinding? = null
+    private val weatherListBinding get() = binding!!
 
     private val weatherListAdapter by lazy {
         WeatherListAdapter {
@@ -30,7 +31,8 @@ class WeatherListFragment: Fragment() {
             bundle.putString(WeatherDetailFragment.key_weather_data, Gson().toJson(it))
             findNavController().navigate(
                 R.id.action_weatherListFragment_to_weatherDetailFragment,
-                bundle)
+                bundle
+            )
         }
     }
 
@@ -39,7 +41,7 @@ class WeatherListFragment: Fragment() {
         container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View {
-        weatherListBinding = FragmentWeatherListBinding.inflate(inflater, container, false)
+        binding = FragmentWeatherListBinding.inflate(inflater, container, false)
         return weatherListBinding.root
     }
 
@@ -124,5 +126,10 @@ class WeatherListFragment: Fragment() {
         weatherListBinding.tvCityName.visibility = View.GONE
         weatherListBinding.rvWeather.visibility = View.GONE
         weatherListBinding.divider.visibility = View.GONE
+    }
+
+    override fun onDestroy() {
+        super.onDestroy()
+        binding = null
     }
 }
